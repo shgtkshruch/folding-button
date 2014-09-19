@@ -1,1 +1,84 @@
+section {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+a {
+  $button-width: 15em;
+  $padding: 0.3em;
+  $duration: 0.4s;
+
+  display: inline-block;
+  width: $button-width;
+
+  font-family: Helvetica none;
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: white;
+
+  perspective: 800px;
+  perspective-origin: 50% 200%;
+  transform: translateX(-25%);
+  transform-style: preserve-3d;
+  transition: transform $duration + 0.1s;
+
+  span {
+    position: relative;
+    display: block;
+    width: 50%;
+    padding: $padding 0;
+    float: left;
+
+    background-color: hotpink;
+
+    &:first-child {
+      text-align: right;
+
+      // transform: rotateY(180deg)だと
+      // アニメーション開始時にチラつくので、
+      // transform: rotateY(179.9deg)を使用
+      transform: rotateY(179.9deg);
+      transform-origin: 100% 50%;
+      transition: transform $duration ease-in-out;
+
+      &:before {
+        content: 'Donate';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: $padding 0;
+
+        text-align: center;
+        color: white;
+        background-color: darkturquoise;
+
+        transform: rotateY(180deg);
+        transition: color 0 $duration / 2, background-color 0 $duration / 2;
+      }
+    }
+
+    &:last-child {
+      text-align: left;
+      text-indent: .5em; // 単語間のカーニングを調整
+    }
+  }
+
+  &:hover {
+    transform: translateX(0);
+    span:first-child {
+      transform: rotateY(0);
+      &:before {
+        color: transparent;
+        background-color: transparent;
+      }
+    }
+  }
+}
