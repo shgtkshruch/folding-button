@@ -1,3 +1,5 @@
+@import 'mixin';
+
 section {
   display: inline-block;
   position: absolute;
@@ -5,101 +7,6 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-// Mixin
-@mixin fold-button-animation($duration: 0.4s) {
-  & {
-    perspective: 800px;
-    perspective-origin: 50% 200%;
-    transform: translateX(-25%);
-    transform-style: preserve-3d;
-    transition: transform $duration + 0.1s;
-
-    &__face {
-      // transform: rotateY(180deg)だと
-      // アニメーション開始時にチラつくので、
-      // transform: rotateY(179.9deg)を使用
-      transform: rotateY(179.9deg);
-      transform-origin: 100% 50%;
-      transition: transform $duration ease-in-out;
-      &:before {
-        transform: rotateY(180deg);
-        transition: color 0 $duration / 2, background-color 0 $duration / 2;
-      }
-    }
-  }
-
-  &:hover {
-    transform: translateX(0);
-    .fold-button__face {
-      transform: rotateY(0);
-      &:before {
-        color: transparent;
-        background-color: transparent;
-      }
-    }
-  }
-}
-
-// Fold button mixin
-//
-// @param {color}  $face-color
-// @param {color}  $back-color
-// @param {color}  $face-text-color
-// @param {color}  $back-text-color
-// @param {text}   $content
-// @param {Number} $padding
-
-@mixin fold-button($face-color: darkturquoise, $back-color: hotpink, $face-text-color: white, $back-text-color: $face-text-color, $content: Default, $padding: .6rem) {
-  & {
-    display: inline-block;
-    @include fold-button-animation();
-  }
-
-  [class^=fold-button] {
-    position: relative;
-    width: 50%;
-    padding: $padding 0;
-    float: left;
-    background-color: $back-color;
-  }
-
-  &__face {
-    text-align: right;
-    color: $back-text-color;
-    &:before {
-      content: '#{$content}';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: $padding 0;
-      text-align: center;
-      color: $face-text-color;
-      background-color: $face-color;
-    }
-  }
-
-  &__back {
-    text-indent: 1rem; // adjust kerning
-    color: $back-text-color;
-  }
-}
-
-// Usage
-//
-// HTML
-// <a href="#" class="fold-button">
-//   <span class="fold-button__face">Donate</span>
-//   <span class="fold-button__back">to RIF</span>
-// </a>
-//
-// CSS
-// .fold-button {
-//   @include fold-button();
-//   width: width when button is open
-// }
 
 .fold-button {
 
