@@ -22,7 +22,6 @@ section {
       transform: rotateY(179.9deg);
       transform-origin: 100% 50%;
       transition: transform $duration ease-in-out;
-
       &:before {
         transform: rotateY(180deg);
         transition: color 0 $duration / 2, background-color 0 $duration / 2;
@@ -34,7 +33,6 @@ section {
     transform: translateX(0);
     .fold-button__face {
       transform: rotateY(0);
-
       &:before {
         color: transparent;
         background-color: transparent;
@@ -51,7 +49,6 @@ section {
 
   display: inline-block;
   width: $button-width;
-
   font-family: Helvetica none;
   font-size: 2rem;
   font-weight: bold;
@@ -62,13 +59,12 @@ section {
 
   [class^=fold-button] {
     position: relative;
-    display: block;
     width: 50%;
     padding: $padding 0;
     float: left;
-
     background-color: hotpink;
   }
+
   &__face {
     text-align: right;
     &:before {
@@ -79,14 +75,12 @@ section {
       bottom: 0;
       left: 0;
       padding: $padding 0;
-
       text-align: center;
-      color: white;
       background-color: darkturquoise;
     }
   }
+
   &__back {
-    text-align: left;
     text-indent: 1rem; // 単語間のカーニングを調整
   }
 }
