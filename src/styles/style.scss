@@ -41,34 +41,34 @@ section {
   }
 }
 
-.fold-button {
-  $button-width: 30rem;
-  $padding: .6rem;
+// Fold button mixin
+//
+// @param {color}  $face-color
+// @param {color}  $back-color
+// @param {color}  $face-text-color
+// @param {color}  $back-text-color
+// @param {text}   $content
+// @param {Number} $padding
 
-  @include fold-button-animation();
-
-  display: inline-block;
-  width: $button-width;
-  font-family: Helvetica none;
-  font-size: 2rem;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: .2rem;
-  color: white;
+@mixin fold-button($face-color: darkturquoise, $back-color: hotpink, $face-text-color: white, $back-text-color: $face-text-color, $content: Default, $padding: .6rem) {
+  & {
+    display: inline-block;
+    @include fold-button-animation();
+  }
 
   [class^=fold-button] {
     position: relative;
     width: 50%;
     padding: $padding 0;
     float: left;
-    background-color: hotpink;
+    background-color: $back-color;
   }
 
   &__face {
     text-align: right;
+    color: $back-text-color;
     &:before {
-      content: 'Donate';
+      content: '#{$content}';
       position: absolute;
       top: 0;
       right: 0;
@@ -76,11 +76,41 @@ section {
       left: 0;
       padding: $padding 0;
       text-align: center;
-      background-color: darkturquoise;
+      color: $face-text-color;
+      background-color: $face-color;
     }
   }
 
   &__back {
-    text-indent: 1rem; // 単語間のカーニングを調整
+    text-indent: 1rem; // adjust kerning
+    color: $back-text-color;
   }
+}
+
+// Usage
+//
+// HTML
+// <a href="#" class="fold-button">
+//   <span class="fold-button__face">Donate</span>
+//   <span class="fold-button__back">to RIF</span>
+// </a>
+//
+// CSS
+// .fold-button {
+//   @include fold-button();
+//   width: width when button is open
+// }
+
+.fold-button {
+
+  @include fold-button($face-color: darkturquoise, $back-color: hotpink, $content: Donate, $padding: .6rem);
+
+  // button style
+  width: 30rem;
+  font-family: Helvetica none;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
 }
