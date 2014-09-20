@@ -1,0 +1,90 @@
+section {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.fold-button {
+  width: 30rem;
+  font-family: Helvetica none;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+.fold-button {
+  display: inline-block;
+}
+.fold-button {
+  -webkit-perspective: 800px;
+          perspective: 800px;
+  -webkit-perspective-origin: 50% 200%;
+          perspective-origin: 50% 200%;
+  -webkit-transform: translateX(-25%);
+      -ms-transform: translateX(-25%);
+          transform: translateX(-25%);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s;
+          transition: transform 0.5s;
+}
+.fold-button__face {
+  -webkit-transform: rotateY(179.9deg);
+          transform: rotateY(179.9deg);
+  -webkit-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-transition: -webkit-transform 0.4s ease-in-out;
+          transition: transform 0.4s ease-in-out;
+}
+.fold-button__face:before {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-transition: color 0 0.2s, background-color 0 0.2s;
+          transition: color 0 0.2s, background-color 0 0.2s;
+}
+.fold-button:hover {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+.fold-button:hover .fold-button__face {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+}
+.fold-button:hover .fold-button__face:before {
+  color: transparent;
+  background-color: transparent;
+}
+.fold-button [class^=fold-button] {
+  position: relative;
+  width: 50%;
+  padding: 0.6rem 0;
+  float: left;
+  background-color: hotpink;
+}
+.fold-button__face {
+  text-align: right;
+  color: white;
+}
+.fold-button__face:before {
+  content: "Donate";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.6rem 0;
+  text-align: center;
+  color: white;
+  background-color: darkturquoise;
+}
+.fold-button__back {
+  text-indent: 1rem;
+  color: white;
+}
