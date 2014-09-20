@@ -7,19 +7,19 @@ section {
 }
 
 a {
-  $button-width: 15em;
-  $padding: 0.3em;
+  $button-width: 30rem;
+  $padding: .6rem;
   $duration: 0.4s;
 
   display: inline-block;
   width: $button-width;
 
   font-family: Helvetica none;
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: .2rem;
   color: white;
 
   perspective: 800px;
@@ -67,7 +67,7 @@ a {
 
     &:last-child {
       text-align: left;
-      text-indent: .5em; // 単語間のカーニングを調整
+      text-indent: 1rem; // 単語間のカーニングを調整
     }
   }
 
